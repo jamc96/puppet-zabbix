@@ -12,12 +12,14 @@
 PidFile=<%= @pidfile %><% end %>
 
 <% if @zabbix_version.to_f >= 3.0 -%>
+<% if @logtype %>
 ### Option: LogType
 #	Specifies where log messages are written to:
 #		system  - syslog
 #		file    - file specified with LogFile parameter
 #		console - standard output
 # LogType=file
+<% end %>
 
 <% if @logfile %>
 ### Option: LogFile
@@ -198,6 +200,7 @@ AllowRoot=<%= @allowroot %>
 #	Drop privileges to a specific, existing user on the system.
 #	Only has effect if run as 'root' and AllowRoot is disabled.
 # User=zabbix
+<% end %>
 
 ### Option: Include
 #	You may include individual files or all files in a directory in the configuration file.
